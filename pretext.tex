@@ -1,0 +1,29 @@
+\frontmatter  % ROMAN NUMBERING
+
+\tableofcontents
+
+\pagebreak
+\chapter*{Abbreviations}
+
+\begin{acronym}[ThisIsQuiteLongEnough]
+	\setstretch{1.25}
+	\acro{texIdentifier}[ACRO]{\textit{Acronym Full Form}}
+\end{acronym}
+
+\iffalse
+\chapter*{Glossary}
+\begin{acronym}[ThisIsQuiteLongEnough]
+	\setstretch{1.25}
+	\acro{xxxLABLExxx}%
+	[Term]{%
+		Definition.
+	}
+\end{acronym}
+\fi
+
+\pagebreak
+\lstlistoflistings
+\pagebreak
+\listoffigures
+
+\mainmatter % ARABIC NUMBERING
