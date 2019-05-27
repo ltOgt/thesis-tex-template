@@ -1,0 +1,67 @@
+% ######################################################### Settings
+	\documentclass[
+		% Uncomment to not render images (faster)
+		%draft,
+		% Papersize
+		paper=a4,
+		% Fontsize
+		12pt,
+		% Move pages away from center
+		twoside=false,
+		% Start new chapters on rigth page
+		openright,
+	]{scrbook}
+
+	% Load all settings
+	\usepackage{settings}
+
+
+% ************ DOCUMENT BEGINS
+\begin{document}
+	% CHOOSE "ngerman" or "english"
+    %\selectlanguage{ngerman}
+    \selectlanguage{english}
+
+    % Please change this part to _titlepage_en for the English version
+    \include{_titlepage_en}
+
+% ######################################################### Front Matter
+
+    % Table of Content, List of Abbreviations, Glossarym List of Figures, List of Tables
+	\input{pretext}
+
+% ######################################################### Main Matter
+	% ======================================= 1
+	\chapter{Chapter Heading}
+	% ======================================= 1
+	% ::::::::::::::::::::::::::::::::::::::: 2
+	\section{Section Heading}
+	% ::::::::::::::::::::::::::::::::::::::: 2
+	% --------------------------------------- 3
+	\subsection{Sub-Section Heading}
+	% --------------------------------------- 3
+	% ....................................... 4
+	\subsubsection{Sub-sub-section Heading}
+	% ....................................... 4
+	% . . . . . . . . . . . . . . . . . . . . 5
+	\paragraph{Paragraph}%\mbox{}
+	% . . . . . . . . . . . . . . . . . . . . 5
+
+
+% ######################################################### Back Matter
+    \cleardoublepage
+
+    \urlstyle{same}
+
+	\input{bib.tex}
+
+	\pagebreak
+
+	\input{appendix}
+
+	\cleardoublepage
+
+    % Please DO NOT change the declaration (even it is in German)
+    \input{_declaration_de}
+
+\end{document}
