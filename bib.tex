@@ -1,0 +1,63 @@
+% <AUTHORS> (<year>). <TITLE>. [<IN>.] <PUBLISHER>. [<ADDITIONS>.]
+%
+% <AUTHORS>   := <AUTHOR>[, <AUTHORS>]
+% <AUTHOR>    := <Last Name>, <First Name Initial>.
+%
+% <TITLE>     := <title>[, <NUMBER>][ {(ISBN: <isbn>)|(DOI: <doi>)}]
+%
+% <IN>        := In: [<AUTHORS>] <TITLE>
+% <NUMBER>    := [Vol. <volume_number>][ (<issue_number>)][, p.<first_page>-<last_page>]
+%
+% <PUBLISHER> := [<city>, [<state>,] <country>. ]<publisher>
+%
+% <ADDITIONS> := {<INTERNET>|<NOTE>}[, <ADDITIONS>]
+% <INTERNET>  := Retreived from: <url> "["<YYYY-MM-DD>"]"
+% <NOTE>      := Note: <remark>
+
+%\newcommand{\lithead}[1]{\protect\smallskip\protect\subsubsection{#1}}
+
+\begin{litbib}[Bibliography]{
+	The following offers a listing of all sources that were used to write this thesis.
+
+	Sources are ordered in accordance to the relative position of where they were first referenced in the text.
+	Sources are furthermore grouped by the chapter in which they were first referenced.
+	This means that a source which was referenced in a later chapter, but has also been referenced in a preceeding one, will not be listed under the later chapter, but instead only under the first.
+}
+%----------------------------------------------------------
+	\lithead{Introduction}
+%==========================================================
+	\lit{
+		authors={},% delete for n.a.
+		year =,% delete for n.d.
+		title ={},% delete for n.t.
+		edition =,
+		volume =,
+		issue =,
+		isbn =,
+		doi =,
+		%[<IN>.]
+		inEditors =,
+		inYear =,
+		inTitle =,
+		inEdition =,
+		inPages =,
+		inVolume =,
+		inIssue =,
+		inIsbn =,
+		inDoi =,
+		%<PUBLISHER>
+		pubLocation ={},
+		pubPublisher ={},
+		%[<ADDITIONS>.]
+		addInetSrc ={\protect\url{}},
+		addInetDate =,
+		addNote =,
+		label = ERR-NO-LABEL-SET
+	}%
+	{}% cite via this label
+
+%----------------------------------------------------------
+	\lithead{Chapter Two}
+%==========================================================
+%----------------------------------------------------------
+\end{litbib}
