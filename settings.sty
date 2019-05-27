@@ -1,0 +1,386 @@
+% ********************************************************
+% *    Content: Thesis Template
+% *    Author: Gian-Luca Fuhrmann <gian.fuhrmann@gmail.com>
+% *    Based on:
+% *        Content: Thesis / Dissertation Latex Template
+% *        Author: Leonard Heilig <leonard.heilig@uni-hamburg.de>
+% *        Based on:
+% *            Content: VSIS template
+% *            Author: Michael von Riegen <riegen@informatik.uni-hamburg.de>
+% *
+% *   Comments based on ctan.org
+% ********************************************************
+% ================= Encoding <
+% : May be required to include below Meta Information
+% .. To support accented characters (üöä...) without using <"> ("u"o"a...)
+% ... Should be used before inputenc
+\RequirePackage[T1]{fontenc}
+% .. To allow for direct input of unicode characters
+\RequirePackage[utf8]{inputenc}
+% .. To allow for correct hyphenation (e.g.: german=Mei-ster, ngerman=Meis-ter)
+\RequirePackage[ngerman,english]{babel}
+% ================= Encoding >
+
+
+% ================= Meta Information <
+% : Used to fill _titlepage_en.tex and PDF-Meta-Information
+% .. Author Information
+\newcommand\myName{Max Musterman}
+\newcommand\myAddress{Musterstraße 123, 12345 Musterburg}
+\newcommand\myEmail{max@musterman.de}
+\newcommand\myMatNr{1234567}
+% .. University Information
+\newcommand\faculty{Muster-Fakultät}
+\newcommand\fachbereich{Fachbereich Musterstudien}
+\newcommand\courseOfStudies{Mustology}
+\newcommand\thesisType{Bachelor's Thesis}
+\newcommand\currentSemester{100}
+% ... Supervisors
+\newcommand\primaryReferee{Dr. Primar Referée}
+\newcommand\primaryRefereeInst{Institute of Primology}
+\newcommand\secondaryReferee{M.Sc. Secundus Referato}
+\newcommand\secondaryRefereeInst{Institute of Secondology}
+\newcommand\supervisor{Peter Maffay}
+\newcommand\supervisorInst{Institute of Peter}
+% .. Thesis Information
+\newcommand\myTitle{My Full Title}
+\newcommand\myShortTitleForHeader{Short Title}
+\newcommand\dateOfSubmission{20XX-XX-XX}
+\newcommand\myKeywords{} % Optional
+% Quote
+\newcommand\optionalQuote{} % shown after title page
+
+% Specifies title and author for latex -- No need to change this
+\title{\mytitle}
+\author{\myName \\ \texttt{\myEmail}}
+
+% For crossreferences
+\RequirePackage[
+    pdfstartview=FitH,
+  	pdffitwindow=true,
+  	colorlinks,
+  	linkcolor=black,
+  	anchorcolor=black,
+  	citecolor=black,
+  	urlcolor=black
+]{hyperref}
+% Apply PDF Meta Information
+\hypersetup {
+    pdftitle     = {\myTitle },
+  	pdfsubject   = {\thesisType},
+  	pdfauthor    = {\myName},
+  	pdfkeywords  = {\myKeywords },
+  	plainpages   = false
+}
+% ================= Meta Information >
+
+
+% ================= Custom Commands <
+% . Used to define custom environments
+% .. \NewEnviron{}
+\RequirePackage{environ}
+% . Used for branching when defining environments etc.
+\RequirePackage{ifthen}
+% . Change resetting of counters
+\RequirePackage{chngcntr}
+% Remove counters from reset list (\@removefromreset)
+\RequirePackage{remreset}
+%=========================== CUSTOM >
+
+
+% : Custom Bibliography Package (https://github.com/ltOgt/litbib)
+% .. Check out e.g. bibtex or biber for alternatives
+\usepackage[customlabel]{litbib}
+
+
+% ================= Spacing <
+% . Set up margins and general page layout
+\RequirePackage[footnotesep=1cm]{geometry}
+% . Tools to change footnote layout
+% .. bottom, flush indent and indent linebreak to after number
+\RequirePackage[bottom, flushmargin, hang]{footmisc}
+% .. Set distance between number in footnote and text
+\setlength{\footnotemargin}{6mm}
+% .. Redefines footnotes to be in brackets
+\renewcommand*{\thefootnote}{[\arabic{footnote}]}
+% .. Indentation for 2nd etc. paragraphs in multiline footnotes
+%\renewcommand{\hangfootparindent}{2em}
+% .. Reduce space above footnotes
+\setlength{\skip\footins}{1.2pc plus 5pt minus 1.5pt}
+
+% . Do not restart numbering of footnotes each chapter
+% .. Comment out to reset counters instead
+% .. Requires package "remreset" (see above)
+\makeatletter
+\@removefromreset{footnote}{chapter}
+\makeatother
+
+% . Add header line
+\RequirePackage[headsepline]{scrpage2}
+\setheadsepline{0.5pt}
+% .. Pre-Defined pagestyle from scrpage2 package
+\pagestyle{scrheadings}
+\ohead[\pagemark]{\small{\pagemark}}
+\chead{}
+\ihead[\myShortTitleForHeader]{\small{\textnormal{\myShortTitleForHeader}}}
+\ofoot{}
+\cfoot{}
+\renewcommand*{\chapterpagestyle}{scrheadings}
+\renewcommand*{\indexpagestyle}{scrheadings}
+\KOMAoptions{cleardoublepage=scrheadings}
+
+% . Provides tools for setting the space between lines
+\RequirePackage{setspace}
+% .. Line spacing
+\setstretch{1.3}
+% .. Border spacing
+\setlength{\textwidth}{15cm}        % WIDTH
+\setlength{\textheight}{25cm}       % HEIGHT
+\setlength{\topmargin}{-12mm}       % TOP BORDER
+\setlength{\parindent}{6pt}			% NO TEXT INDENT
+% .. Skip after paragraph
+\setlength{\parskip}{5pt}
+% .. Indentation of paragraph first line
+% .. Can be cancelled localy
+% ... {\setlength{\parindent}{0pt} ...text...}
+\setlength{\parindent}{0pt}
+
+% . table of content, list of figures, list of tables
+\RequirePackage[titles]{tocloft}
+\setlength{\cftfignumwidth}{2cm}
+\setlength{\cfttabnumwidth}{2cm}
+\setlength{\cftfigindent}{0cm}
+\setlength{\cfttabindent}{0cm}
+\setlength{\cftbeforechapskip}{0.2cm}
+% ================= Spacing >
+
+
+% ================= Sectioning <
+\setkomafont{sectioning}{\normalcolor\bfseries}
+% . Change layout of headings etc.
+\RequirePackage{titlesec}
+% ..... TITLESEC BUG FIX, LOSS OF NUMBERING <
+\RequirePackage{etoolbox}
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+% ..... TITLESEC BUG FIX, LOSS OF NUMBERING >
+\titleformat{\chapter}[hang]{\Large\bfseries}{\thechapter\quad}{1em}{}
+\titlespacing{\chapter}{0pt}{-16pt}{15pt}
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+\renewcommand*{\chapterheadstartvskip}{\vspace*{0pt}}
+\titleformat{\section}[hang]{\large\bfseries}{\thesection\quad}{1.4em}{}
+\titleformat{\subsection}[hang]{\large\bfseries}{\thesubsection\quad}{0.6em}{}
+\titleformat{\subsubsection}[hang]{\large\bfseries}{\thesubsubsection\quad}{0.6em}{}
+% ================= Sectioning >
+
+
+% ================= Additional Styling <
+% . Change color of tex elements
+% .. For usage see, e.g., https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX
+\RequirePackage{xcolor}
+% . Extension for \inlcudegraphics command to include images in the doc
+\RequirePackage[pdftex]{graphicx}
+% . create custom graphics in latex
+% .. Cirlces that can be used as indicators
+% ... \newcommand{\bluedot}{\tikz\draw[blue,fill=blue] (0,0) circle (.5ex); }
+\RequirePackage{tikz}
+
+% . Visible red boxes rendered in document to clearly mark open tasks
+\newcommand{\TODO}[1]{%
+	\colorbox{red!30}{\textbf{TODO: #1}}%
+}
+% . Over- and underlined roman numerals
+% ..  \barroman{I} / II/III/IV/...
+\def\barroman#1{%
+	\sbox0{#1}\dimen0=\dimexpr\wd0+1pt\relax
+	\makebox[\dimen0]{%
+		\rlap{%
+			\vrule width\dimen0 height 0.06ex depth 0.06ex%
+		}%
+		\rlap{%
+			\vrule width\dimen0 height\dimexpr\ht0+0.03ex\relax
+			depth\dimexpr-\ht0+0.09ex\relax%
+		}%
+		\kern.5pt#1\kern.5pt%
+	}%
+}
+% ================= Additional Styling >
+
+
+% ================= Pre-Text Elements <
+% . Define nomenclature in pre-text
+% .. \makenomenclature
+% .. \begin{document}
+% .. \nomenclature{$h$}{Planck constant}
+% .. \printnomenclature
+\RequirePackage[intoc]{nomencl}
+\renewcommand{\nomname}{Nomenclature}
+% .. Define lablewidth
+\setlength{\nomlabelwidth}{.40\hsize}
+% .. Define spacing between items/lines
+\setlength{\nomitemsep}{-\parsep}
+
+% . Define acronyms in pre-text
+% .. \begin{acronym}[LongestWordAsReference]
+% ..    \setstretch{1.25}
+% ..    \acro{acronymID}[ACRONYM]{\textit{Full Text}}
+% .. \end{acronym}
+% . Usage:
+% .. \acf{acronymID} % Full Text (ACRONYM)
+% .. \acl{acronymID} % Full Text
+% .. \acs{acronymID} % ACRONYM
+% .. \ac{acronymID}  % \acf first time, after that \acs
+\RequirePackage{acronym}
+% . make acronym environment right ragged
+\makeatletter
+\patchcmd{\AC@deflist}{\raggedright}{}{}{}
+\makeatother
+
+\renewcommand{\cfttabpresnum}{Tab. }
+\renewcommand{\cftfigpresnum}{Fig. }
+\renewcommand{\nomname}{List of Abbreviations}
+\renewcommand{\contentsname}{List of Contents}
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
+% ================= Pre-Text Elements >
+
+
+% ================= Fonts <
+% . Add mathematical T1 encoded fonts
+% .. (see https://tex.stackexchange.com/a/58124/165511)
+% .. (Loads amsfonts internally)
+% ... blackboard bold letters (uppercase only)
+% ... fraktur letters
+% ... subscript sizes of bold math italic and bold Greek letters
+% ... subscript sizes of large symbols such as sum and product
+% ... added sizes of the Computer Modern small caps font
+% ... cyrillic fonts (from the University of Washington)
+% ... Euler mathematical fonts
+% . Also math symbols
+% .. \barwedge, \boxdot, \boxminus, \boxplus, \boxtimes, \Cap, \Cup, ...
+% .. (see http://mirror.utexas.edu/ctan/fonts/amsfonts/source/amssymb.dtx)
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+% .. (see https://ctan.org/pkg/mathtools?lang=en)
+\RequirePackage{mathtools}
+\RequirePackage[mathscr]{eucal}
+
+% . Custom symbolds
+% .. ^=
+\newcommand{\corresp}{\overset{\scriptscriptstyle\wedge}{=}}
+% .. ^~~
+\newcommand{\waprx}{$\widehat{\approx}$}
+% .. €
+\RequirePackage{eurosym}
+
+% . Handles propper rendering of urls
+% .. \url{https://www.domain.top}
+\RequirePackage{url}
+% . unbreakable hyphens with \=/
+\usepackage[shortcuts]{extdash}
+% . Better underlining with \ul{} instead of \em{} or \emph{}
+\RequirePackage[normalem]{ulem}
+
+% . Sets Times New Roman like font as default (e.g., Adobe Times Roman)
+\RequirePackage{mathptmx}
+% . Loads Helvetica (and its clones), scaled so that it matches Times Roman
+\RequirePackage[scaled=.95]{helvet}
+% . Use \texttt{} for monospace courier font (typewriter style)
+\RequirePackage{courier}
+% ================= Fonts >
+
+
+% ================= Floating Environments <
+% . Better interface for defining floating objects
+\RequirePackage{float}
+% . More expressive figure/table/... captions
+% .. \begin{minipage}{\linewidth}% keep same page
+% .. 	\captionof{%
+% .. 		figure% Or "table" instead of "figure"
+% .. 	}[%
+% .. 		...short caption as shown in \lstlistoflistings or \listoffigure...%
+% .. 	]{%
+% .. 		...long caption to explain the figure/table%
+% .. 	}\label{fig:my_awesome_figure}% only if needed
+% .. 	\makebox[\linewidth]{%    center image
+% .. 		\includegraphics[%
+% .. 			width=1.125\textwidth%
+% .. 		]{%
+% .. 			relative/path/to/image.png
+% .. 		}%
+% .. 	}
+% .. \end{minipage}
+\RequirePackage[labelfont=bf, font=small]{caption}
+% . For including code blocks in the doc
+\RequirePackage[final]{listings}
+% ================= Floating Environments >
+
+
+% ================= Custom Shorthands <
+% . Use Superscript in-line
+\newcommand{\tsup}[1]{\textsuperscript{#1}}
+% . Use Subscript in-line
+\newcommand{\tsub}[1]{\textsubscript{#1}}
+% . Reference and append Setion
+\newcommand{\Secref}[1]{{Section \ref{#1}}}
+\newcommand{\secref}[1]{{section \ref{#1}}}
+% . Reference a paragraph by adding the name in parantheses
+\newcommand{\parref}[1]{{section \ref{#1} (\textit{\nameref{#1}})}}
+% . Reference figures
+\newcommand{\fref}[1]{{figure \ref{#1}}}
+\newcommand{\Fref}[1]{{Figure \ref{#1}}}
+% . Mathsctipt in-line
+\newcommand{\mcal}[1]{$\mathscr{#1}$}
+% ================= Custom Shorthands >
+
+
+% Possible Junk ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% . Virtual Fonts emulating T1 coded fonts
+%\RequirePackage{ae,aecompl}
+%
+%% Java Code; Use with \begin{lstlisting} ...
+%\RequirePackage{listings}
+%\definecolor{dkgreen}{rgb}{0,0.6,0}
+%\definecolor{gray}{rgb}{0.5,0.5,0.5}
+%\definecolor{mauve}{rgb}{0.58,0,0.82}
+%
+%\lstset{frame=tb,
+%% language=Java,
+%  aboveskip=3mm,
+%  belowskip=0mm,
+%  showstringspaces=false,
+%  columns=flexible,
+%  basicstyle={\small\ttfamily},
+%  numbers=none,
+%  numberstyle=\tiny\color{gray},
+%  keywordstyle=\color{blue},
+%  commentstyle=\color{dkgreen},
+%  stringstyle=\color{mauve},
+%  breaklines=true,
+%  breakatwhitespace=true,
+%  tabsize=3
+%}
+%
+%\definecolor{lightgrey}{rgb}{0.90,0.90,0.90}
+%\lstloadlanguages{XML}
+%\lstset{
+%    tabsize=2,
+%    escapeinside={(*@}{@*)},
+%    captionpos=t,
+%    framerule=0pt,
+%    %backgroundcolor=\color{lightgrey},
+%   	basicstyle=\small\ttfamily\linespread{1.15},
+%    keywordstyle=\small\bfseries,
+%    numbers=left,
+%    fontadjust
+%}
+
+%\RequirePackage{soul}
+% .. Rename table/figure shorthands
+%\renewcommand{\cfttabpresnum}{Tab. }
+%\renewcommand{\cftfigpresnum}{Abb. }
+%\RequirePackage{booktabs}
+% Allows for colored rows/cells in tables
+%\RequirePackage{colortbl}
+%\RequirePackage{paralist}
