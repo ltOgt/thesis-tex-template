@@ -1,0 +1,85 @@
+% *************************************************************************
+% *    IWI Hamburg / Prof. Dr. Stefan Voß
+% *    Thesis / Dissertation Latex Template
+% *
+% *    Author: Leonard Heilig <leonard.heilig@uni-hamburg.de>
+% *
+% *    Note: some parts of this template are based on the VSIS template
+% *              of Michael von Riegen <riegen@informatik.uni-hamburg.de>
+% *
+% *************************************************************************
+\begin{titlepage}
+
+% START PAGE: -1
+\setcounter{page}{-1}
+
+\begin{figure}[h]
+     \begin{flushleft}
+
+     \end{flushleft}
+	 %
+     \hspace{-40px}
+	 %
+     \noindent%
+	 \begin{minipage}[t][0px][b]{0.3\textwidth}
+     	%\noindent\includegraphics[scale=0.3]{images/LOGO.pdf}
+     \end{minipage}
+	 %
+     \hspace{50px}
+	 %
+     \begin{flushright}
+
+     \end{flushright}
+\end{figure}
+
+\vfill
+\vspace{5mm}
+
+\large
+\begin{center}
+
+	\definecolor{uhhred}{cmyk}{0,100,100,0}
+    % THESIS TYPE
+	\noindent {
+	 \color{uhhred}\textbf{\MakeUppercase\thesisType}
+	}
+	\vspace{2.0cm}\\
+	% THESIS TITLE
+	\textbf{\Large \myTitle} 
+	\vspace{2.0cm}\\ presented by
+\vspace{0.4cm}\\
+\myName
+
+\end{center}
+
+\vfill
+
+\begin{tabbing}
+	\hspace{10em} \=  \kill
+	%Presented by: \> \textbf{\myName} \\
+	%\> \textrm{\myAddress} \\
+	%\> \textrm{\myEmail} \\
+	Faculty: \>  \faculty \\
+	\> \fachbereich \\
+	Course of Studies: \>  \courseOfStudies \\ %~(Semester \currentSemester)
+	Matriculation Number: \>  \myMatNr \\ \\
+	Supervisor: \> \supervisor \\
+	 \>	\supervisorInst \\					   % CUSTOM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	Primary Referee: \> \primaryReferee \\
+	 \>	\primaryRefereeInst \\
+	Secondary Referee: \> \secondaryReferee \\
+	 \>	\secondaryRefereeInst \\
+	Date of submission: \> \dateOfSubmission \\
+\end{tabbing}
+
+% BLANK PAGE WITH A QUOTE (OPTIONAL)
+\newpage
+
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+~\\ \vfill \noindent
+\optionalQuote
+
+\end{titlepage}
+
