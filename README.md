@@ -19,5 +19,6 @@ The first is a custom wrapper around `\thebibliography` (see [litbib](https://gi
 The appendix includes tables, figures and code listings.
 Finally, the mandatory declaration closes of the work.
 
-# Disclaimer
+# Note
+I dabble in LaTeX and am in no way an expert on the topic.
 If you spot something that looks wrong or suboptimal, feel free to open a ticket to point that out.
